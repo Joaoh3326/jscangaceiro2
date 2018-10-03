@@ -12,11 +12,6 @@ const filterItemsByCode = (code, items) => items
 const sumItemsValue = items => items
     .reduce((total, item) => total + item.valor, 0);
 
-const sumItens = code => notas => notas
-    .$flatMap(nota => nota.itens)
-    .filter(item => item.codigo == code)
-    .reduce((total, item) => total + item.valor, 0);
-
 export const notasService = {
     listAll() {
         return fetch(API)
@@ -28,7 +23,6 @@ export const notasService = {
     },
 
     sumItens(code) {
-        const filterItems = partialize(filterItemsByCode, code);
 
         const sumItems = pipe(
             getItemsFromNotas,
