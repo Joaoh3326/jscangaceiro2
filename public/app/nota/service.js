@@ -15,7 +15,8 @@ const sumItemsValue = items => items
 export const notasService = {
     listAll() {
         return fetch(API)
-            .then(handleStatus)
+            .then(notas => null)
+            // .then(handleStatus)
             .catch(err => {
                 console.log(err);
                 return Promise.reject('Não foi possível obter as notas fiscais');
