@@ -4,14 +4,6 @@ import { notasService as service } from './nota/service.js';
 import { takeUntil, debounceTime, partialize, pipe } from '../utils/operators.js';
 import { EventEmitter } from '../utils/event-emitter.js';
 
-import { Maybe } from '../utils/maybe.js';
-
-const textToArray = textM => textM.map(text => Array.from(text));
-const arrayToText = arrayM => arrayM.map(array => array.join(''));
-const transform = pipe(textToArray, arrayToText);
-const result = transform(Maybe.of('Cangaceiro'));
-alert(result);
-
 const operations = pipe(
     partialize(takeUntil, 3),
     partialize(debounceTime, 500)
