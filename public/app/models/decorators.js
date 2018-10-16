@@ -5,12 +5,13 @@ const logExecutionTime = (method, property, args) => {
     return result;
 };
 
-const inspectMethod = (method, property, args) => {
-    console.log(`Metodo decorado: ${property}`);
-    console.log(`Argumentos do método: ${args}`);
-    const result = method(...args);
-    console.log(`resultado do método: ${result}`);
-    return result;
+const inspectMethod = ({ excludeReturn } = {}) =>
+    (method, property, args) => {
+        console.log(`Metodo decorado: ${property}`);
+        console.log(`Argumentos do método: ${args}`);
+        const result = method(...args);
+        if (!excludeReturn) console.log(`resultado do método: ${result}`);
+        return result;
 }
 
 module.exports = { 
