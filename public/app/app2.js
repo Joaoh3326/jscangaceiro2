@@ -1,10 +1,10 @@
 const Person = require('./models/Person');
 const decorate = require('../utils/decorate');
-const logExecutionTime = require('./models/decorators');
+const { logExecutionTime, inspectMethod } = require('./models/decorators');
 
 decorate(Person, {
-    speak: logExecutionTime,
-    getFullName: logExecutionTime
+    speak: [logExecutionTime, inspectMethod],
+    getFullName: [logExecutionTime]
 });
 
 
